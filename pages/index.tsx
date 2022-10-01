@@ -6,7 +6,7 @@ import SearchBox from '../components/search'
 const Home: NextPage = () => {
   return (
     <>
-      
+      hello
       </>
   )
 }

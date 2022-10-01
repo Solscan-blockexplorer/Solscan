@@ -63,7 +63,7 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   font-family: "Fira Sans", sans-serif;
-  /* background: #2c3e50; */
+  /* background: #fff; */
   /* background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
   background: linear-gradient(to right, #bdc3c7, #2c3e50); */
 }

@@ -1,18 +1,17 @@
 import { FormEvent } from "react";
 import styled from "styled-components";
 
-interface ISubmit{
-    onSubmit: (e:FormEvent) => void;
+interface ISubmit {
+  onSubmit: (e: FormEvent) => void;
 }
 export const SearchWrapper = styled.form<ISubmit>`
   width: 100%;
   height: 3rem;
   padding: 10px;
   background-color: #000;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 30px;
   position: relative;
-
 
   .input-field {
     width: 100%;
@@ -23,8 +22,8 @@ export const SearchWrapper = styled.form<ISubmit>`
     border: none;
     outline: none;
 
-    ::placeholder{
-        color: #E0E0E0;
+    ::placeholder {
+      color: #e0e0e0;
     }
   }
 
