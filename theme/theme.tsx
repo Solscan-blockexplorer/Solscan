@@ -1,7 +1,7 @@
 export default {
     color: {
       white: "#fff",
-      main: ""
+      main: "#E0e0e0"
     },
   
     fontSize: {

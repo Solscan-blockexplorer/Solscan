@@ -12,6 +12,7 @@ export const SearchWrapper = styled.form<ISubmit>`
   border: 1px solid #e0e0e0;
   border-radius: 30px;
   position: relative;
+  max-width: 93%;
 
   .input-field {
     width: 100%;

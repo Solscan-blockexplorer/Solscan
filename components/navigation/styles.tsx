@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 export const NavigationWrapper = styled.header`
-  background-color: rgba(000, 000, 000, 0.8);
-  /* height: 2rem; */
+  background-color: #444;
   padding: 1rem 2.5rem 1rem 1rem;
+  padding: 1rem;
   display: grid;
-  height: 100%;
+  height: 84px;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: 1rem;
 
   .logo {
-    width: 65px;
-    height: 65px;
-    cursor: pointer;
+    width: 4rem;
+    height: 100%;
+
     a img {
       width: 100%;
       height: 100%;
@@ -30,10 +30,13 @@ export const NavigationWrapper = styled.header`
   .links {
     display: flex;
     gap: 2rem;
+    align-items: center;
+    
 
     .active {
       color: #fff;
       text-decoration: none;
+      font-weight: 700;
     }
     
     .non-active {

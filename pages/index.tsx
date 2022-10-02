@@ -1,13 +1,14 @@
 import type { NextPage } from 'next'
-import Meta from '../components/Meta'
-import SearchBox from '../components/search'
+import UserTable from '../components/UserTable/UserTable'
+import Overview from '../components/wallet-overview'
 
 
 const Home: NextPage = () => {
   return (
     <>
-      hello
-      </>
+    <Overview/>
+    <UserTable/>
+    </>
   )
 }
 

@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
 :root{
-  --primary-color: #1D1567;
-  --secondary-color:#25DC98
+
 }
 /* Box sizing */
 *,
@@ -62,10 +62,9 @@ table {
 body {
   line-height: 1.5;
   min-height: 100vh;
-  font-family: "Fira Sans", sans-serif;
-  /* background: #fff; */
-  /* background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
-  background: linear-gradient(to right, #bdc3c7, #2c3e50); */
+  font-family: 'Poppins', sans-serif;
+  color: #e0e0e0;
+  background-color: #000;
 }
 /* make images easier to work with */
 img,
