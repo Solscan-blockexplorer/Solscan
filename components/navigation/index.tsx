@@ -28,7 +28,7 @@ const Navigation = () => {
         </div>
         <ul className="links">
           {links.map((link: LinkProps) => (
-            <Link href={link.href} passHref>
+            <Link href={link.href} passHref key={link.href}>
               <a
                 className={
                   router.pathname === link.href ? "active" : "non-active"
