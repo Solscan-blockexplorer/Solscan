@@ -7,8 +7,8 @@ import { BASE_URL, oneSolana } from "../../../constants"
     if(data.nativeBalance){
         localStorage.setItem("validatedAddress",JSON.stringify(walletAddress))
         data =  (Math.round(data.nativeBalance * 100.0 / 9) / oneSolana).toFixed(2)
+        return data
     }
-    return data
 }
 
 const userTransactions = async (walletAddress: string)=>{
