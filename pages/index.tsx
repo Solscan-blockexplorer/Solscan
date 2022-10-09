@@ -4,7 +4,7 @@ import UserTable from '../components/UserTable/UserTable'
 import Overview from '../components/wallet-overview'
 import { useAppDispatch, useAppSelector } from '../hooks/setup'
 import { getBalance } from '../store/features/wallet/walletAsyncThunkActions'
-import { handleAddressChange, wallet } from '../store/features/wallet/walletSlice'
+import { handleAddressChange, handleLocalStorage, wallet } from '../store/features/wallet/walletSlice'
 
 
 const Home: NextPage = () => {
@@ -14,11 +14,11 @@ const Home: NextPage = () => {
   useEffect(()=>{
     const address = localStorage.getItem('validatedAddress')
     if (!!address){
-     const validatedAddress = JSON.parse(address)
-      dispatch(handleAddressChange(validatedAddress))
-      dispatch(getBalance(validatedAddress))
+     const validAddress = JSON.parse(address)
+     dispatch(handleLocalStorage(validAddress))
+      dispatch(getBalance(validAddress))
     }
-  },[validatedAddress])
+  },[])
 
 
   return (

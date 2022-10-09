@@ -31,6 +31,9 @@ export const walletSlice = createSlice({
     handleAddressChange:(state,{payload})=>{
       state.address = payload
     },
+    handleLocalStorage:(state,{payload})=>{
+      state.validatedAddress = payload
+    },
     reset: (state) => {
       state.isLoaded = false;
       state.isSuccess = false;
@@ -52,7 +55,7 @@ export const walletSlice = createSlice({
       state.isLoaded = false
       state.isSuccess = true
       state.balance = action.payload as unknown as string
-      state.validatedAddress = state.address
+      state.validatedAddress = state.validatedAddress ? state.validatedAddress : state.address
       state.message = "successful"
     })
     .addCase(getBalance.rejected,(state,{payload})=>{
@@ -64,7 +67,7 @@ export const walletSlice = createSlice({
     },
 });
 
-export const { reset,handleAddressChange } = walletSlice.actions;
+export const { reset,handleAddressChange,handleLocalStorage } = walletSlice.actions;
 export const wallet = (state:AppState) => state.wallet
 
 export default walletSlice.reducer
