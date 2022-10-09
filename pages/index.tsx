@@ -1,12 +1,28 @@
 import type { NextPage } from 'next'
+import { useEffect } from 'react'
 import UserTable from '../components/UserTable/UserTable'
 import Overview from '../components/wallet-overview'
+import { useAppDispatch, useAppSelector } from '../hooks/setup'
+import { getBalance } from '../store/features/wallet/walletAsyncThunkActions'
+import { handleAddressChange, wallet } from '../store/features/wallet/walletSlice'
 
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
+  const {isLoaded,isSuccess,message,balance,validatedAddress} = useAppSelector(wallet);
+
+  useEffect(()=>{
+    const validatedAddress = JSON.parse(localStorage.getItem('validatedAddress')|| '{}')
+    if (validatedAddress !== null){
+      dispatch(handleAddressChange(validatedAddress))
+      dispatch(getBalance(validatedAddress))
+    }
+  },[validatedAddress])
+
+
   return (
     <>
-    <Overview/>
+    <Overview walletAddress={validatedAddress} walletAmount={balance}/>
     <UserTable/>
     </>
   )
