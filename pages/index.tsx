@@ -12,8 +12,9 @@ const Home: NextPage = () => {
   const {isLoaded,isSuccess,message,balance,validatedAddress} = useAppSelector(wallet);
 
   useEffect(()=>{
-    const validatedAddress = JSON.parse(localStorage.getItem('validatedAddress')|| '{}')
-    if (validatedAddress !== null){
+    const address = localStorage.getItem('validatedAddress')
+    if (!!address){
+     const validatedAddress = JSON.parse(address)
       dispatch(handleAddressChange(validatedAddress))
       dispatch(getBalance(validatedAddress))
     }
