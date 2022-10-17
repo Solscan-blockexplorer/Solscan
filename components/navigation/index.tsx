@@ -5,6 +5,7 @@ import Images from "../../utils/images";
 import SearchBox from "../search";
 import { NavigationWrapper } from "./styles";
 import { useRouter } from "next/router";
+import { NextComponentType } from "next";
 
 interface LinkProps {
   pathname: string;
@@ -16,7 +17,7 @@ const links: LinkProps[] = [
   { pathname: "Deep Dive", href: "/deep-dive" },
 ];
 
-const Navigation = () => {
+const Navigation: NextComponentType = () => {
   const router = useRouter();
   return (
     <NavigationWrapper className="header">
