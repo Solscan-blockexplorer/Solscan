@@ -1,24 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { AppState } from "../..";
-import { getBalance } from "./walletAsyncThunkActions";
+import { getBalance, getTransactions } from "./walletAsyncThunkActions";
 
-export interface walletState {
+export interface WalletState {
   address: string;
   validatedAddress:string;
   balance:string;
   message:string;
+  walletTransactions: CurrentWalletTransaction[] | null;
   isLoaded:boolean;
   isError:boolean;
   isSuccess:boolean
 }
 
+export interface CurrentWalletTransaction{
+  type:string;
+  description?:string;
+  feePayer?: string;
+  signature?:string;
+  timestamp:number;
+  accountData?: AccountData[]
+  nativeTransfers?:NativeTransfers[]
 
-const initialState: walletState = {
+}
+
+export interface AccountData{
+  account?:string;
+  nativeBalanceChange?:number
+}
+
+type NativeTransfers = {
+  amount?: number
+}
+
+const initialState: WalletState= {
   address: "",
   validatedAddress:"",
   balance:"0",
   message:"",
+  walletTransactions:null,
   isLoaded:false,
   isError:false,
   isSuccess:false
@@ -63,6 +84,20 @@ export const walletSlice = createSlice({
       state.isSuccess = false
       state.message = payload as unknown as string
       state.balance = "0"
+    })
+    .addCase(getTransactions.pending,(state,{payload})=>{
+      state.isLoaded=true
+    })
+    .addCase(getTransactions.fulfilled,(state,action)=>{
+      state.isLoaded = false
+      state.isSuccess = true
+      state.walletTransactions = action.payload
+      state.message = "successful"
+    })
+    .addCase(getTransactions.rejected,(state,{payload})=>{
+      state.isLoaded = false
+      state.isSuccess = false
+      state.message = payload as unknown as string
     })
     },
 });

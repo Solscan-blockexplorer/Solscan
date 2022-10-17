@@ -10,3 +10,11 @@ export interface OverviewState{
     walletAddress:string;
     walletAmount:string;
 }
+
+export interface WalletTransaction{
+    description: string;
+    signature:string;
+    date: Date;
+    type:string;
+    amount:number;
+}
