@@ -24,3 +24,8 @@ export interface WalletTransaction{
     type:string;
     amount:number;
 }
+
+export interface IType{
+    type:string;
+    img?:string;
+}

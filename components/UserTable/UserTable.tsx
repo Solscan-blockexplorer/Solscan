@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Images from "../../utils/images";
 import DataTable from "../DataTable/DataTable";
+import { IType } from "../../interface";
 
 const columns: GridColDef[] = [
   {
@@ -16,6 +17,19 @@ const columns: GridColDef[] = [
     field: "type",
     headerName: "Payment Type",
     width: 150,
+    renderCell: (params) => (
+      params.value === "TRANSFER" ? (
+        <Type type={params.value} img={Images.transferIcon} />
+      ) : params.value === "BURN" ? (
+        <Type type={params.value} img={Images.burnIcon} />
+      ) : params.value === "NFT_SALE" ? (
+        <Type type={params.value} img={Images.saleIcon} />
+      ) : params.value === "NFT_MINT" ? (
+        <Type type={params.value} img={Images.mintIcon} />
+      ) : (
+        <Type type={params.value} img={"Others"} />
+      )
+    ),
   },
   {
     field: "description",
@@ -55,6 +69,17 @@ const columns: GridColDef[] = [
     ),
   },
 ];
+
+const Type = ({ type, img }: IType) => {
+  return (
+    <div className="payment-type">
+      <div>
+        <img src={img} alt="payment-type" />
+      </div>
+      <p className="type">{type}</p>
+    </div>
+  );
+};
 
 const userTableStyles = {
   display: "flex",

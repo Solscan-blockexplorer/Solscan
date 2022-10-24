@@ -42,6 +42,11 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   "& .more-info:hover": {
     cursor: "pointer",
   },
+  "& .payment-type":{
+    display:"flex",
+    gap:"0.5rem",
+    alignItems:"center"
+  }
 }));
 
 export const CustomPagination = () => {
