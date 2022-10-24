@@ -9,7 +9,7 @@ import { handleAddressChange, handleLocalStorage, wallet } from '../store/featur
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
-  const {isLoaded,isSuccess,message,balance,validatedAddress} = useAppSelector(wallet);
+  const {isLoaded,isSuccess,message,balance,validatedAddress,walletTransactions} = useAppSelector(wallet);
 
   useEffect(()=>{
     const address = localStorage.getItem('validatedAddress')
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   return (
     <>
     <Overview walletAddress={validatedAddress} walletAmount={balance}/>
-    <UserTable/>
+    <UserTable walletTransactions={walletTransactions} isLoaded={isLoaded}/>
     </>
   )
 }

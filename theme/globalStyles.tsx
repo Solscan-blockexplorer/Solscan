@@ -104,6 +104,34 @@ input[type=number] {
 /* Utility classes     */
 /* ------------------- */
 
+.MuiDataGrid-root{
+  border: none !important;
+  .MuiDataGrid-cell{
+white-space: normal !important;
+/* word-wrap: break-word !important; */
+color:#C6C6C6;
+}
+.MuiDataGrid-columnHeaderTitle{
+  font-weight: 700;
+  font-family:"Poppins";
+  font-size: 16px;
+  color:#C6C6C6;
+}
+.MuiDataGrid-row .MuiDataGrid-cell{
+  border-bottom: none;
+}
+
+  .MuiTablePagination-root{
+      color:#C6C6C6
+  
+}
+
+.MuiButtonBase-root .MuiIconButton-root .MuiIconButton-sizeSmall span{
+  color:#fff
+}
+}
+
+
 `;
 
 export default GlobalStyle;

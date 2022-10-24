@@ -1,4 +1,9 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 import { walletSlice } from "./features/wallet/walletSlice";
 import { createWrapper } from "next-redux-wrapper";
 
@@ -7,11 +12,11 @@ const makeStore = () =>
     reducer: {
       [walletSlice.name]: walletSlice.reducer,
     },
-    middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
     devTools: process.env.NODE_ENV !== "production",
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   });
 
 export type AppStore = ReturnType<typeof makeStore>;
