@@ -47,7 +47,9 @@ const columns: GridColDef[] = [
           href={`https://solscan.io/tx/${params.value}`}
           className="more-info"
         >
-          <img src={Images.moreInfoIcon} alt="solscan icon" />
+          <a target="_blank" rel="noopener noreferrer">
+            <img src={Images.moreInfoIcon} alt="solscan icon" />
+          </a>
         </Link>
       </div>
     ),
@@ -55,20 +57,14 @@ const columns: GridColDef[] = [
 ];
 
 const userTableStyles = {
-  //   height: "100%",
   display: "flex",
   flexGrow: 1,
-  // backgroundColor: "#fff",
-  // color: "#C6C6C6",
   p: 2,
-
   "& .super-app.negative": {
-    // backgroundColor: 'rgba(157, 255, 118, 0.49)',
     color: "#C62828;",
     fontWeight: "600",
   },
   "& .super-app.positive": {
-    // backgroundColor: '#d47483',
     color: "#00897B",
     fontWeight: "600",
   },

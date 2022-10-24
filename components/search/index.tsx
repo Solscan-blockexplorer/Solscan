@@ -4,7 +4,7 @@ import Images from "../../utils/images";
 import { useAppDispatch, useAppSelector } from "../../hooks/setup";
 import { handleAddressChange, wallet } from "../../store/features/wallet/walletSlice";
 import { PublicKey } from "@solana/web3.js";
-import { getBalance } from "../../store/features/wallet/walletAsyncThunkActions";
+import { getBalance, getTransactions } from "../../store/features/wallet/walletAsyncThunkActions";
 
 const SearchBox = () => {
   const [input, setInput] = useState("");
@@ -31,6 +31,7 @@ const SearchBox = () => {
     e.preventDefault();
     if (validateSolAddress(address)){
       dispatch(getBalance(address))
+      dispatch(getTransactions(address))
     }
   }
 
