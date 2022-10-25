@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import Loader from "../components/Loader/loader";
 import TransactionList from "../components/mobile-transaction-list";
 import UserTable from "../components/UserTable/UserTable";
 import Overview from "../components/wallet-overview";
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
     balance,
     validatedAddress,
     walletTransactions,
-    grouped
+    grouped,
   } = useAppSelector(wallet);
 
   useEffect(() => {
@@ -38,7 +39,13 @@ const Home: NextPage = () => {
   return (
     <>
       <Overview walletAddress={validatedAddress} walletAmount={balance} />
-      <TransactionList grouped={grouped} walletTransactions={walletTransactions} />
+      {isLoaded && <Loader />}
+      {grouped && (
+        <TransactionList
+          grouped={grouped}
+          walletTransactions={walletTransactions}
+        />
+      )}
       <UserTable walletTransactions={walletTransactions} isLoaded={isLoaded} />
     </>
   );

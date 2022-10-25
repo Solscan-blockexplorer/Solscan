@@ -10,7 +10,7 @@ export interface WalletState {
   balance:string;
   message:string;
   walletTransactions: CurrentWalletTransaction[] | WalletTransaction[] | null;
-  grouped:IGrouped[] | null
+  grouped:IGrouped[] | null | undefined
   isLoaded:boolean;
   isError:boolean;
   isSuccess:boolean
@@ -28,7 +28,7 @@ export interface CurrentWalletTransaction{
 
 export interface IGrouped{
   date:string;
-  amount:string;
+  amount:number;
 }
 
 export interface AccountData{
