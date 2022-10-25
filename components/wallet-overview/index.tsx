@@ -6,11 +6,11 @@ const Overview = ({walletAddress, walletAmount}: OverviewState) => {
   return (
     <OverviewWrapper>
       <div className="wallet">
-        <div className="wallet-info">
         <h2 className="account-header">Account</h2>
+        <div className="wallet-info">
         <p className="wallet-address">{walletAddress}</p>
-        </div>
         <p className="wallet-balance">{walletAmount} SOL</p>
+        </div>
       </div>
     </OverviewWrapper>
   );

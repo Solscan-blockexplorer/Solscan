@@ -8,12 +8,26 @@ import Link from "next/link";
 const Nav = styled.nav`
   padding: 0 20px;
   min-height: 9vh;
-  background: #1c2022;
+  background: rgba(117, 117, 117, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap:2rem;
   z-index:3;
+
+  .active {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    
+    .non-active {
+      text-decoration: none;
+      color: #E0E0E0;
+      padding: 0 5px;
+      width: fit-content;
+      display: block;
+    }
 
   @media (min-width: 768px) {
     .header-right {
@@ -73,6 +87,7 @@ const NavIcon = styled.button`
   justify-content: center;
   gap: 0;
 
+
   @media (min-width: 769px) {
     display: none;
   }
@@ -103,6 +118,20 @@ const Overlay = styled.div<{ open: boolean }>`
   background: #1c2022;
   transition: height 0.4s ease-in-out;
   z-index: 2;
+
+  .active {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    
+    .non-active {
+      text-decoration: none;
+      color: #E0E0E0;
+      padding: 0 5px;
+      width: fit-content;
+      display: block;
+    }
 
   @media (min-width: 769px) {
     display: none;
