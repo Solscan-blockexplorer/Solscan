@@ -17,15 +17,16 @@ export interface OverviewState{
 }
 
 export interface WalletTransaction{
-    id:string;
-    description: string;
-    signature:string;
-    date: string;
-    type:string;
-    amount:number;
+    id?:string;
+    description?: string;
+    signature?:string;
+    date?: string;
+    type?:string;
+    amount?:number;
 }
 
 export interface IType{
-    type:string;
+    type?:string | null;
     img?:string;
+    details?:string;
 }

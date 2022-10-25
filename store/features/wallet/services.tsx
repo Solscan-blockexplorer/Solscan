@@ -3,7 +3,8 @@ import { BASE_URL } from "../../../constants";
 import { WalletTransaction } from "../../../interface";
 import { CurrentWalletTransaction } from "./walletSlice";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-import {v4} from "uuid"
+import { v4 } from "uuid";
+import _ from "lodash";
 
 const balance = async (walletAddress: string) => {
   const url = `${BASE_URL}${walletAddress}/balances?api-key=${process.env.NEXT_PUBLIC_API_KEY}`;
@@ -28,22 +29,45 @@ const userTransactions = async (walletAddress: string) => {
     )
     .map((transaction: CurrentWalletTransaction) => {
       const formattedTransaction = {} as WalletTransaction;
-      const dateObj = new Date(transaction.timestamp * 1000)
-      const month = dateObj.toLocaleString("en-us",{month:"short"}).toUpperCase()
-      const day = ('0' + dateObj.getDate()).slice(-2)
-      const year = dateObj.getUTCFullYear().toString().slice(-2)
+      const dateObj = new Date(transaction.timestamp * 1000);
+      const month = dateObj
+        .toLocaleString("en-us", { month: "short" })
+        .toUpperCase();
+      const day = ("0" + dateObj.getDate()).slice(-2);
+      const year = dateObj.getUTCFullYear().toString().slice(-2);
       formattedTransaction.description = transaction.description as string;
       formattedTransaction.type = transaction.type;
-      formattedTransaction.id = v4()
-      formattedTransaction.signature = transaction.signature as string
-      formattedTransaction.date = `${day} ${month} ${year}`
-      formattedTransaction.amount =
-        (getAmount(transaction.type, transaction, walletAddress) /
-        LAMPORTS_PER_SOL).toFixed(3) as unknown as number;
+      formattedTransaction.id = v4();
+      formattedTransaction.signature = transaction.signature as string;
+      formattedTransaction.date = `${day} ${month} ${year}`;
+      formattedTransaction.amount = (
+        getAmount(transaction.type, transaction, walletAddress) /
+        LAMPORTS_PER_SOL
+      ).toFixed(3) as unknown as number;
       return formattedTransaction;
     });
-  console.log(userTransaction);
-  return userTransaction;
+  const grouped = _(userTransaction)
+    .groupBy("date")
+    .map((transactions: any, date: any) => {
+      const amount = transactions
+        .map((transaction: any) => Number(transaction.amount))
+        .reduce(
+          (previousValue: number, currentValue: number) =>
+            previousValue + currentValue,
+          0
+        )
+        .toFixed(3) as unknown as number;
+      return {
+        date,
+        amount,
+      };
+    })
+    .value();
+    console.log(grouped)
+  return {
+    userTransaction,
+    grouped,
+  };
 };
 
 const getAmount = (

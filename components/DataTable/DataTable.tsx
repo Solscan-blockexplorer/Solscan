@@ -24,8 +24,6 @@ const DataTable = ({ rows, columns, loading, sx }: IDataTable) => {
         }}
         autoHeight={true}
         pageSize={pageSize}
-        // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        // rowsPerPageOptions={[10, 25, 50]}
         getRowId={(row: any) => row.id}
       />
     </Box>

@@ -88,11 +88,11 @@ const Line = styled.span<{ open: boolean }>`
   transition: width 0.4s ease-in-out;
 
   :nth-child(2) {
-    width: ${(props) => (props.open ? "40%" : "70%")};
+    width: ${(props) => (props.open ? "30%" : "60%")};
   }
 
   :nth-child(3) {
-    width: 15px;
+    width:  ${(props) => (props.open ? "70%" : "30%")};;
   }
 `;
 
