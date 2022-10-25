@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
   {
     field: "type",
     headerName: "Payment Type",
-    width: 150,
+    width: 160,
     renderCell: (params) => (
       params.value === "TRANSFER" ? (
         <Type type={params.value} img={Images.transferIcon} />

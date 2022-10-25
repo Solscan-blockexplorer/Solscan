@@ -114,7 +114,7 @@ color:#C6C6C6;
 .MuiDataGrid-columnHeaderTitle{
   font-weight: 700;
   font-family:"Poppins";
-  font-size: 16px;
+  font-size: 18px;
   color:#C6C6C6;
 }
 .MuiDataGrid-row .MuiDataGrid-cell{

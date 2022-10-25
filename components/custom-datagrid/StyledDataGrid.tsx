@@ -27,10 +27,15 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   "& .MuiDataGrid-cell": {
     color:
       theme.palette.mode === "light" ? "#c6c6c6" : "rgba(255,255,255,0.65)",
-    },
-    "& .MuiDataGrid-row": {
-      display: "flex",
-      marginBottom: "1.5rem",
+  },
+  "& .MuiDataGrid-row:hover": {
+    backgroundColor: "#303030",
+  },
+  "& .MuiDataGrid-row": {
+    display: "flex",
+    alignItems: "center",
+    padding: "1rem 0",
+    // marginBottom: "1.5rem",
   },
   "& .MuiIconButton-root": {
     color: "#fff",
@@ -42,11 +47,11 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   "& .more-info:hover": {
     cursor: "pointer",
   },
-  "& .payment-type":{
-    display:"flex",
-    gap:"0.5rem",
-    alignItems:"center"
-  }
+  "& .payment-type": {
+    display: "flex",
+    gap: "0.5rem",
+    alignItems: "center",
+  },
 }));
 
 export const CustomPagination = () => {

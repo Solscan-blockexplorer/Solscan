@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Meta from "../Meta";
 import Navigation from "../navigation";
+import Header from "../navigation/header";
 
 interface IProps {
   children: React.ReactNode;
@@ -26,7 +27,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
   return (
     <LayoutWrapper>
       <Meta />
-      <Navigation />
+      <Header />
       <main className="main">{children}</main>
     </LayoutWrapper>
   );

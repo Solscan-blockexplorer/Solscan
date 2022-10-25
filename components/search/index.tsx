@@ -32,6 +32,7 @@ const SearchBox = () => {
     if (validateSolAddress(address)){
       dispatch(getBalance(address))
       dispatch(getTransactions(address))
+      // dispatch(handleAddressChange(''))
     }
   }
 
