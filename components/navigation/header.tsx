@@ -152,8 +152,8 @@ const Header = () => {
         </Logo>
         <Menu>
           {links.map((link: LinkProps) => (
-            <Item>
-              <Link href={link.href} passHref key={link.href}>
+            <Item key={link.href}>
+              <Link href={link.href} passHref >
                 <NavLink
                   className={
                     router.pathname === link.href ? "active" : "non-active"
@@ -176,8 +176,8 @@ const Header = () => {
       <Overlay open={toggle}>
         <OverlayMenu open={toggle}>
           {links.map((link: LinkProps) => (
-            <Item onClick={()=>toggleNav(false)}>
-              <Link href={link.href} passHref key={link.href}>
+            <Item onClick={()=>toggleNav(false)} key={link.href}>
+              <Link href={link.href} passHref >
                 <NavLink
                   className={
                     router.pathname === link.href ? "active" : "non-active"
